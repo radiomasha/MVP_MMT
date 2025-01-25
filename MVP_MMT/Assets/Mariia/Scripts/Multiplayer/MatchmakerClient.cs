@@ -53,6 +53,7 @@ public class MatchmakerClient : MonoBehaviour
 
    private string PlayerID()
    {
+      Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
       return AuthenticationService.Instance.PlayerId;
    }
 
@@ -147,7 +148,6 @@ public class MatchmakerClient : MonoBehaviour
 
                 if (_currentPollAttempt >= MAX_POLL_ATTEMPTS) {
                     Debug.LogError("Max polling attempts reached. Creating new ticket.");
-                    CreateATicket();
                     break;
                 }
             } while (!gotAssignment);

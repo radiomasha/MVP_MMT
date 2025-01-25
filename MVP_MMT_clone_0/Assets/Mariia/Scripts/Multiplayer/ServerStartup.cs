@@ -54,18 +54,27 @@ public class ServerStartup : MonoBehaviour
 
         if (server)
         {
-            StartServer();
-            await StartServerServices();
-        }
-        else
-        {
-            ClientInstance?.Invoke();
+            await StartServerServices(); // Initialize services first
+            StartServer();              // Then start server
         }
     }
 
-    private void StartServer()
+    private async void StartServer()
     {
-        NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(_internalServerIP, _serverPort);
+        if (NetworkManager.Singleton == null)
+        {
+            Debug.LogError("NetworkManager not found in scene");
+            return;
+        }
+    
+        var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+        if (transport == null)
+        {
+            Debug.LogError("UnityTransport component not found");
+            return;
+        }
+
+        transport.SetConnectionData(_internalServerIP, _serverPort);
         NetworkManager.Singleton.StartServer();
         NetworkManager.Singleton.OnClientDisconnectCallback += ClientDisconnected;
     }
