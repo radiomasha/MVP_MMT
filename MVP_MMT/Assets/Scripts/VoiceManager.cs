@@ -43,6 +43,11 @@ public class VoiceManager : MonoBehaviour
         appVoiceExperience.Deactivate();
     }
 
+    public void StopListening()
+    {
+        appVoiceExperience.Deactivate();
+    }
+
     private void OnEnable()
     {
         appVoiceExperience.VoiceEvents.OnPartialTranscription.AddListener(OnPartialTranscription);
