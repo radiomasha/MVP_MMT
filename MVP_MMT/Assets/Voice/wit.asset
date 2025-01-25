@@ -35,11 +35,25 @@ MonoBehaviour:
     isPrivate: 1
     createdAt: 2025-01-24T08:24:23-0800
     trainingStatus: 1
-    lastTrainDuration: 0
-    lastTrainedAt: 1969-12-31T16:00:00-0800
-    nextTrainAt: 1969-12-31T16:00:00-0800
+    lastTrainDuration: 61
+    lastTrainedAt: 2025-01-24T08:34:41-0800
+    nextTrainAt: 2025-01-24T08:33:40-0800
     intents: []
-    entities: []
+    entities:
+    - name: wake_word
+      id: 3620375451442469
+      lookups:
+      - free-text
+      - keywords
+      roles:
+      - name: wake_word
+        id: 611165664942241
+      keywords:
+      - keyword: hey quest
+        synonyms:
+        - hello quest
+        - hey quest
+        - hi quest
     traits: []
     versionTags: []
     voices:
