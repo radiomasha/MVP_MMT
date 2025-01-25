@@ -185,7 +185,7 @@ MonoBehaviour:
   _supportedGrabTypes: 3
   _pinchGrabRules:
     _thumbRequirement: 0
-    _indexRequirement: 1
+    _indexRequirement: 2
     _middleRequirement: 1
     _ringRequirement: 0
     _pinkyRequirement: 0
@@ -193,8 +193,8 @@ MonoBehaviour:
   _palmGrabRules:
     _thumbRequirement: 1
     _indexRequirement: 0
-    _middleRequirement: 2
-    _ringRequirement: 2
+    _middleRequirement: 1
+    _ringRequirement: 1
     _pinkyRequirement: 1
     _unselectMode: 0
   _movementProvider: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 8817949090808993350}
   m_Layer: 0
   m_Name: Node
-  m_TagString: Untagged
+  m_TagString: Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,7 +348,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &1534529985684398673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed41c9494270f45c2954343ce338e717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
 --- !u!1 &2176338720360020710
 GameObject:
   m_ObjectHideFlags: 0

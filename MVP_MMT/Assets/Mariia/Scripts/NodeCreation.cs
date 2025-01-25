@@ -12,10 +12,12 @@ public class NodeCreation : MonoBehaviour
     [SerializeField] private HandGrabInteractor rightHand;
     
     private bool isNodeCreated = false;
+
+    private bool canCreateNodes;
     // Start is called before the first frame update
-    void Start()
+    public void SetCreateNodes(bool draw)
     {
-        
+        canCreateNodes = draw;
     }
 
     // Update is called once per frame
@@ -23,28 +25,33 @@ public class NodeCreation : MonoBehaviour
     {
         if (AnchorManager.Instance.AnchorCreated())
         {
-            if (Physics.Raycast(rightHand.PalmPoint.position, rightHand.PalmPoint.forward,
-                    out RaycastHit hitInfo, 0.01f))
+            if (canCreateNodes)
             {
-                // UIDebugger.Log("Ray hit: " + hitInfo.collider.gameObject.name);
-                
-                if (hitInfo.collider.gameObject.name == "WALL_FACE_EffectMesh")
+                if (Physics.Raycast(rightHand.PalmPoint.position, rightHand.PalmPoint.forward,
+                        out RaycastHit hitInfo, 0.03f))
                 {
-                    if (isNodeCreated == false)
+                    // UIDebugger.Log("Ray hit: " + hitInfo.collider.gameObject.name);
+
+                    if (hitInfo.collider.gameObject.name == "WALL_FACE_EffectMesh")
                     {
-                        Vector3 position = hitInfo.point - hitInfo.normal * 0.035f;
-                        Quaternion rotation = Quaternion.LookRotation(hitInfo.normal);
-                        var nodeObject = Instantiate(nodePrefab, hitInfo.point, rotation);
-                        nodeObject.transform.SetParent(AnchorManager.Instance.mainAnchor.transform);
-                        isNodeCreated = true;
-                        StartCoroutine(ResetNodeCreation());
-                        NodeLevel level = nodeObject.GetComponent<NodeLevel>();
-                        level.SetLevel(Level.baseLevel);
-                        UIDebugger.Log(level.currentLevel.ToString());
+                        if (isNodeCreated == false)
+                        {
+                            Vector3 position = hitInfo.point - hitInfo.normal * 0.035f;
+                            Quaternion rotation = Quaternion.LookRotation(hitInfo.normal);
+                            var nodeObject = Instantiate(nodePrefab, hitInfo.point, rotation);
+                            nodeObject.transform.SetParent(AnchorManager.Instance.mainAnchor.transform);
+                            isNodeCreated = true;
+                            StartCoroutine(ResetNodeCreation());
+                            NodeLevel level = nodeObject.GetComponent<NodeLevel>();
+                            level.SetLevel(Level.baseLevel);
+                            UIDebugger.Log(level.currentLevel.ToString());
+                        }
                     }
                 }
+
             }
         }
+
     }
 
     private IEnumerator ResetNodeCreation()
