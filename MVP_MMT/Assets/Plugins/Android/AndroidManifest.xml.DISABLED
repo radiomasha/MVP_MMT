@@ -18,4 +18,5 @@
   <!-- Anchors -->
   <uses-permission android:name="com.oculus.permission.USE_ANCHOR_API" />
   <uses-feature android:name="android.hardware.vr.headtracking" android:version="1" android:required="true" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
 </manifest>
