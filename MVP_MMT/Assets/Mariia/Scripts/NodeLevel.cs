@@ -12,13 +12,14 @@ public enum Level
 }
 public class NodeLevel : MonoBehaviour
 {
-   
+    
     public Level currentLevel;
+    public int nodeIndex;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+  
     }
 
     // Update is called once per frame

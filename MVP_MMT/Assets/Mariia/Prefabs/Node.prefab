@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 8097760639079565402}
   - component: {fileID: 1534529985684398673}
   - component: {fileID: 8817949090808993350}
+  - component: {fileID: -3987406011435987201}
   m_Layer: 0
   m_Name: Node
   m_TagString: Node
@@ -383,6 +384,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 0
+  nodeIndex: 0
+--- !u!114 &-3987406011435987201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948555636756523992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb6134b697134b3b814d1c1d98dd462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 1948555636756523992}
+  planeMaterial: {fileID: 2100000, guid: 327185f85d608444eb748501b75d8a43, type: 2}
+  levelDistance: 0.3
 --- !u!1 &2176338720360020710
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8553879344146762705
 RectTransform:
   m_ObjectHideFlags: 0

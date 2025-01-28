@@ -11,6 +11,8 @@ public class NodeCreation : MonoBehaviour
     [SerializeField] private EffectMesh effectMesh;
     [SerializeField] private HandGrabInteractor rightHand;
     
+    private List <GameObject> nodeObjects = new List<GameObject>();
+    private List<int> nodeIds = new List<int>();
     private bool isNodeCreated = false;
 
     private bool canCreateNodes;
@@ -42,16 +44,15 @@ public class NodeCreation : MonoBehaviour
                             nodeObject.transform.SetParent(AnchorManager.Instance.mainAnchor.transform);
                             isNodeCreated = true;
                             StartCoroutine(ResetNodeCreation());
-                            NodeLevel level = nodeObject.GetComponent<NodeLevel>();
-                            level.SetLevel(Level.baseLevel);
-                            UIDebugger.Log(level.currentLevel.ToString());
+                            nodeObject.GetComponent<NodeLevel>().currentLevel = Level.baseLevel;
+                            //UIDebugger.Log(nodeObject.GetComponent<NodeLevel>().currentLevel.ToString());
+                            nodeObjects.Add(nodeObject);
+                            nodeObject.GetComponent<NodeLevel>().nodeIndex = nodeObjects.Count - 1;
                         }
                     }
                 }
-
             }
         }
-
     }
 
     private IEnumerator ResetNodeCreation()
