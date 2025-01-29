@@ -96,8 +96,8 @@ public class AddLevel : MonoBehaviour
     // Update is called once per frame
     private void CreateLevel()
     {
-        Vector3 pos = existingNode.transform.position - Vector3.forward * levelDistance;
-        var node = Instantiate(nodePrefab, pos, Quaternion.identity);
+        Vector3 pos = existingNode.transform.position - Vector3.forward.normalized * levelDistance;
+        var node = Instantiate(nodePrefab, pos, existingNode.rotation);
         node.GetComponent<NodeLevel>().currentLevel = existingNode.GetComponent<NodeLevel>().currentLevel + 1;
         node.GetComponent<NodeLevel>().nodeIndex =existingNode.GetComponent<NodeLevel>().nodeIndex;
         //UIDebugger.Log(node.GetComponent<NodeLevel>().currentLevel.ToString());
@@ -105,6 +105,7 @@ public class AddLevel : MonoBehaviour
             Quaternion.identity);
         plane.GetComponent<Renderer>().material = planeMaterial;
         plane.transform.SetParent(node.transform);
+        plane.SetActive(false);
         nodes.Add(node);
         planes.Add(plane);
     }

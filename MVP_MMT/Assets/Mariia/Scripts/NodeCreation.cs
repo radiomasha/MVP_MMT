@@ -50,6 +50,11 @@ public class NodeCreation : MonoBehaviour
                             nodeObject.GetComponent<NodeLevel>().nodeIndex = nodeObjects.Count - 1;
                         }
                     }
+                    else if(hitInfo.collider.CompareTag("Plane"))
+                    {
+                        Vector3 position = hitInfo.point;
+                        Quaternion rotation = Quaternion.LookRotation(-hitInfo.normal);
+                    }
                 }
             }
         }
